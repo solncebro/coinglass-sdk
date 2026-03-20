@@ -1,4 +1,62 @@
 {
-  "name": "coin-glass-parser",
-  "packageManager": "yarn@4.9.1"
+  "name": "@solncebro/coinglass",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for CoinGlass API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "author": "solncebro",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solncebro/coinglass-sdk.git"
+  },
+  "homepage": "https://github.com/solncebro/coinglass-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/solncebro/coinglass-sdk/issues"
+  },
+  "keywords": [
+    "coinglass",
+    "crypto",
+    "api",
+    "sdk",
+    "typescript",
+    "futures",
+    "open-interest",
+    "funding-rate",
+    "liquidation",
+    "websocket"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
+    "test": "tsx test.ts",
+    "prepublishOnly": "yarn build && yarn lint && yarn format:check"
+  },
+  "packageManager": "yarn@4.9.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@solncebro/websocket-engine": "^0.2.0",
+    "axios": "^1.13.6"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.57.1",
+    "@typescript-eslint/parser": "^8.57.1",
+    "eslint": "^10.0.3",
+    "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
 }
