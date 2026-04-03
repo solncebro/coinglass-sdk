@@ -372,6 +372,11 @@ export interface ExchangePairItem {
   instrumentId: string;
   baseAsset: string;
   quoteAsset: string;
+  settlementCurrency: string;
+  maxLeverage: number;
+  fundingInterval: number;
+  priceTickSize: number;
+  onboardDate: number;
 }
 
 export type GetCvdHistoryParams = ExchangePairIntervalParams;

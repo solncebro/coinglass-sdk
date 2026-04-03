@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.2] - 2026-04-03
+
+### Changed
+
+- `ExchangePairItem` дополнен полями: `settlementCurrency`, `maxLeverage`, `fundingInterval`, `priceTickSize`, `onboardDate`
+
 ## [1.0.1] - 2026-04-03
 
 ### Fixed
