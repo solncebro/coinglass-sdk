@@ -103,6 +103,7 @@ export class CoinGlassError extends Error {
   constructor(
     public readonly code: string,
     message: string,
+    public readonly requestUrl?: string,
   ) {
     super(message);
     this.name = 'CoinGlassError';

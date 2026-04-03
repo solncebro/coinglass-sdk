@@ -58,7 +58,16 @@ export class CoinGlassClient {
       const body = response.data as ApiResponse<unknown>;
 
       if (body.code !== '0') {
-        throw new CoinGlassError(body.code, body.msg);
+        const { baseURL = '', url = '', params } = response.config;
+        const query = params
+          ? '?' +
+            Object.entries(params as Record<string, unknown>)
+              .map(([k, v]) => `${k}=${v}`)
+              .join('&')
+          : '';
+        const requestUrl = `${baseURL}${url}${query}`;
+
+        throw new CoinGlassError(body.code, body.msg, requestUrl);
       }
 
       return response;

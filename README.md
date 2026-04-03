@@ -1,17 +1,11 @@
 # @solncebro/coinglass
 
-TypeScript SDK для CoinGlass API. Оборачивает ~120 REST эндпоинтов и 2 WebSocket-канала в типизированную библиотеку.
+TypeScript SDK для CoinGlass API. Оборачивает 149 REST эндпоинтов и 2 WebSocket-канала в типизированную библиотеку.
 
 ## Установка
 
 ```bash
 yarn add @solncebro/coinglass
-```
-
-Или локально:
-
-```bash
-yarn add file:../coin-glass-parser
 ```
 
 ## Использование
@@ -78,11 +72,11 @@ webSocket.close();
 
 | Модуль | Описание | Кол-во эндпоинтов |
 |---|---|---|
-| `futures` | Open Interest, Funding Rate, Liquidation, Long/Short, OrderBook, Taker, CVD, Net Position, Indicators | 65 |
+| `futures` | Open Interest, Funding Rate, Liquidation, Long/Short, OrderBook, Taker, CVD, Net Position, Indicators | 64 |
 | `spots` | Markets, OrderBook, Taker, CVD | 15 |
 | `options` | Max Pain, Open Interest, Volume | 4 |
 | `etf` | Bitcoin/Ethereum/Solana/Xrp ETF Flows | 13 |
-| `indicators` | Fear&Greed, AHR999, Rainbow, NUPL, 30+ индексов | 32 |
+| `indicators` | Fear&Greed, AHR999, Rainbow, NUPL, 30+ индексов | 33 |
 | `onchain` | Exchange Balance, Whale Transfers, Token Unlocks | 8 |
 | `hyperliquid` | Whale Positions, Alerts, Long/Short Ratio | 7 |
 | `other` | Coinbase Premium, Bitfinex Margin, Borrow Rate, Calendar, News | 5 |
