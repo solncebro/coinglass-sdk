@@ -327,9 +327,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@solncebro/coinglass@workspace:.":
+"@solncebro/coinglass-sdk@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@solncebro/coinglass@workspace:."
+  resolution: "@solncebro/coinglass-sdk@workspace:."
   dependencies:
     "@solncebro/websocket-engine": "npm:^0.2.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.57.1"

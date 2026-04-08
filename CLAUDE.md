@@ -2,7 +2,7 @@
 
 TypeScript-библиотека для CoinGlass REST API и WebSocket. Оборачивает 149 эндпоинтов и 2 WebSocket-канала в типизированный SDK.
 
-- **npm-пакет**: `@solncebro/coinglass`
+- **npm-пакет**: `@solncebro/coinglass-sdk`
 - **Лицензия**: MIT
 - **Репозиторий**: https://github.com/solncebro/coinglass-sdk
 

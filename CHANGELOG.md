@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.3] - 2026-04-08
+
+### Changed
+
+- Переименование пакета с `@solncebro/coinglass` на `@solncebro/coinglass-sdk` для соответствия npm-конвенциям
+
 ## [1.0.2] - 2026-04-03
 
 ### Changed

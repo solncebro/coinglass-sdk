@@ -1,11 +1,11 @@
-# @solncebro/coinglass
+# @solncebro/coinglass-sdk
 
 TypeScript SDK для CoinGlass API. Оборачивает 149 REST эндпоинтов и 2 WebSocket-канала в типизированную библиотеку.
 
 ## Установка
 
 ```bash
-yarn add @solncebro/coinglass
+yarn add @solncebro/coinglass-sdk
 ```
 
 ## Использование
@@ -13,7 +13,7 @@ yarn add @solncebro/coinglass
 ### REST API
 
 ```ts
-import { CoinGlass, IntervalEnum } from '@solncebro/coinglass';
+import { CoinGlass, IntervalEnum } from '@solncebro/coinglass-sdk';
 
 const coinGlass = new CoinGlass('your-api-key');
 
