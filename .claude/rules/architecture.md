@@ -10,7 +10,8 @@ globs: src/**/*.ts
 1. **client** (`src/client.ts`) — Axios HTTP-клиент
    - BaseURL: `https://open-api-v4.coinglass.com`
    - Заголовок `CG-API-KEY`
-   - Response interceptor: проверяет `code !== "0"` и бросает `CoinGlassError`
+   - Конструктор принимает `options: CoinGlassClientOptions` — `timeoutMilliseconds` для тайм-аута запроса
+   - Response interceptor: проверяет `code !== "0"` и бросает `CoinGlassError`; также сохраняет состояние лимита запросов из заголовков `api-key-max-limit` / `api-key-use-limit`, доступное через `getRateLimitState()`
    - Метод `get<T>(path, params?)` конвертирует camelCase→snake_case для параметров и snake_case→camelCase для ответа
 
 2. **types** (`src/types/*.ts`) — все интерфейсы и enum'ы

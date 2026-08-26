@@ -1,5 +1,13 @@
-import axios, { AxiosInstance } from 'axios';
-import { ApiResponse, CoinGlassError } from './types/common';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import {
+  ApiResponse,
+  CoinGlassClientOptions,
+  CoinGlassError,
+  RateLimitState,
+} from './types/common';
+
+const MAX_LIMIT_HEADER = 'api-key-max-limit';
+const USE_LIMIT_HEADER = 'api-key-use-limit';
 
 function camelToSnake(str: string): string {
   return str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
@@ -43,18 +51,37 @@ function toRecord(params: object): Record<string, unknown> {
   return params as Record<string, unknown>;
 }
 
+function parseHeaderNumber(response: AxiosResponse, headerName: string): number | null {
+  const rawValue = response.headers?.[headerName];
+
+  if (rawValue === undefined || rawValue === null) {
+    return null;
+  }
+
+  const value = Number(rawValue);
+
+  return Number.isFinite(value) ? value : null;
+}
+
 export class CoinGlassClient {
   private readonly instance: AxiosInstance;
 
-  constructor(apiKey: string) {
+  private rateLimitState: RateLimitState | null = null;
+
+  constructor(apiKey: string, options?: CoinGlassClientOptions) {
     this.instance = axios.create({
       baseURL: 'https://open-api-v4.coinglass.com',
       headers: {
         'CG-API-KEY': apiKey,
       },
+      ...(options?.timeoutMilliseconds !== undefined
+        ? { timeout: options.timeoutMilliseconds }
+        : {}),
     });
 
     this.instance.interceptors.response.use((response) => {
+      this.captureRateLimitState(response);
+
       const body = response.data as ApiResponse<unknown>;
 
       if (body.code !== '0') {
@@ -79,5 +106,25 @@ export class CoinGlassClient {
     const response = await this.instance.get<ApiResponse<T>>(path, { params: snakeParams });
 
     return convertKeysToCamelCase(response.data.data) as T;
+  }
+
+  getRateLimitState(): RateLimitState | null {
+    return this.rateLimitState;
+  }
+
+  private captureRateLimitState(response: AxiosResponse): void {
+    const maxLimit = parseHeaderNumber(response, MAX_LIMIT_HEADER);
+    const useLimit = parseHeaderNumber(response, USE_LIMIT_HEADER);
+
+    if (maxLimit === null || useLimit === null) {
+      return;
+    }
+
+    this.rateLimitState = {
+      maxLimit,
+      useLimit,
+      remaining: Math.max(0, maxLimit - useLimit),
+      capturedAt: Date.now(),
+    };
   }
 }

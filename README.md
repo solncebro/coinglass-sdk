@@ -68,6 +68,21 @@ webSocket.subscribeFuturesTrade(
 webSocket.close();
 ```
 
+### Настройки клиента и лимит запросов
+
+```ts
+const coinGlass = new CoinGlass('your-api-key', { timeoutMilliseconds: 5000 });
+
+await coinGlass.futures.getOpenInterestAggregatedHistory({
+  symbol: 'BTC',
+  interval: IntervalEnum.OneDay,
+});
+
+// Состояние лимита запросов из заголовков последнего успешного ответа
+const rateLimitState = coinGlass.getRateLimitState();
+// { maxLimit: 30, useLimit: 4, remaining: 26, capturedAt: 1798700000000 }
+```
+
 ## API-модули
 
 | Модуль | Описание | Кол-во эндпоинтов |

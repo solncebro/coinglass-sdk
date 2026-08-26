@@ -331,7 +331,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@solncebro/coinglass-sdk@workspace:."
   dependencies:
-    "@solncebro/websocket-engine": "npm:^0.2.0"
+    "@solncebro/websocket-engine": "npm:>=0.6.0 <1.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.57.1"
     "@typescript-eslint/parser": "npm:^8.57.1"
     axios: "npm:^1.13.6"
@@ -342,12 +342,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@solncebro/websocket-engine@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "@solncebro/websocket-engine@npm:0.2.0"
+"@solncebro/websocket-engine@npm:>=0.6.0 <1.0.0":
+  version: 0.6.0
+  resolution: "@solncebro/websocket-engine@npm:0.6.0"
   dependencies:
-    ws: "npm:^8.17.0"
-  checksum: 10c0/5ff6da28ba4ca6794555572959137d1b9495b97cbd3d7e8f118b3e83a01851920f5418f17e9d1ff2ff3293fec3f1e4a70790a009c6c1006e3991388a5c854c4b
+    ws: "npm:^8.18.0"
+  checksum: 10c0/b6726652ae47aaee2cd0d683acdcb9182d0585501b73e43e3912701e3966ae6df6bcf28fc190010a01b5f42e704fbc44048f18447bbde7073c23a93679fed03f
   languageName: node
   linkType: hard
 
@@ -1787,9 +1787,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.17.0":
-  version: 8.20.0
-  resolution: "ws@npm:8.20.0"
+"ws@npm:^8.18.0":
+  version: 8.21.3
+  resolution: "ws@npm:8.21.3"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ">=5.0.2"
@@ -1798,7 +1798,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 10c0/956ac5f11738c914089b65878b9223692ace77337ba55379ae68e1ecbeae9b47a0c6eb9403688f609999a58c80d83d99865fe0029b229d308b08c1ef93d4ea14
+  checksum: 10c0/7b28dc2863ea0e2cece68d142a3eee90361021b73f750431e6d8076bb7dede5fdfdb75b3d29534b62f411261147b76b1bc80fb5cc63ab0aabd467280e85b22e0
   languageName: node
   linkType: hard
 

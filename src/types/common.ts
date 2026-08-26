@@ -99,6 +99,17 @@ export interface ApiResponse<T> {
   data: T;
 }
 
+export interface CoinGlassClientOptions {
+  timeoutMilliseconds?: number;
+}
+
+export interface RateLimitState {
+  maxLimit: number;
+  useLimit: number;
+  remaining: number;
+  capturedAt: number;
+}
+
 export class CoinGlassError extends Error {
   constructor(
     public readonly code: string,

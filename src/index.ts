@@ -1,5 +1,6 @@
 import { CoinGlassClient } from './client';
 import { CoinGlassWebSocket } from './websocket';
+import { CoinGlassClientOptions, RateLimitState } from './types/common';
 import { WebSocketLogger } from './types/websocket';
 import { FuturesApi } from './api/futures';
 import { SpotsApi } from './api/spots';
@@ -22,10 +23,14 @@ export class CoinGlass {
 
   private readonly apiKey: string;
 
-  constructor(apiKey: string) {
+  private readonly client: CoinGlassClient;
+
+  constructor(apiKey: string, options?: CoinGlassClientOptions) {
     this.apiKey = apiKey;
 
-    const client = new CoinGlassClient(apiKey);
+    const client = new CoinGlassClient(apiKey, options);
+
+    this.client = client;
 
     this.futures = new FuturesApi(client);
     this.spots = new SpotsApi(client);
@@ -39,6 +44,10 @@ export class CoinGlass {
 
   createWebSocket(logger: WebSocketLogger): CoinGlassWebSocket {
     return new CoinGlassWebSocket(this.apiKey, logger);
+  }
+
+  getRateLimitState(): RateLimitState | null {
+    return this.client.getRateLimitState();
   }
 }
 

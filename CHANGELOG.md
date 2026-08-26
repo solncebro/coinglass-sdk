@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.0] - 2026-08-26
+
+### Added
+
+- Второй параметр конструктора `CoinGlass` и `CoinGlassClient` — `options: CoinGlassClientOptions` с полем `timeoutMilliseconds` для тайм-аута запроса
+- `CoinGlass.getRateLimitState()` — состояние лимита запросов из заголовков ответа (`api-key-max-limit`, `api-key-use-limit`): сколько запросов разрешено, сколько уже потрачено и сколько осталось в текущую минуту
+
+### Changed
+
+- Зависимость `@solncebro/websocket-engine` расширена до диапазона `>=0.6.0 <1.0.0` (ранее `^0.2.0`)
+
 ## [1.0.3] - 2026-04-08
 
 ### Changed
